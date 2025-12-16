@@ -6,11 +6,11 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, (process as any).cwd(), '');
   return {
     plugins: [react()],
-    base: './', // Ensures relative paths for assets on GitHub Pages
+    base: '/chess-games-organizer/', // Ensures relative paths for assets on GitHub Pages
     define: {
       // Polyfill process.env for the app code
       'process.env': {
-        API_KEY: env.API_KEY || "", 
+        API_KEY: env.API_KEY || "",
         NODE_ENV: mode
       }
     }
