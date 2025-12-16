@@ -1,4 +1,4 @@
-import { ArchiveResponse, ChessGame, GamesResponse, DateRange } from '../types';
+import { ChessGame, GamesResponse, DateRange } from '../types';
 
 const BASE_URL = 'https://api.chess.com/pub';
 
@@ -11,16 +11,16 @@ export const fetchPlayerGames = async (
 
   // Generate list of YYYY/MM to fetch
   const targets: { year: number; month: number }[] = [];
-  
+
   let currentYear = startYear;
   let currentMonth = startMonth;
 
   // Normalize inputs to ensure loop termination
   const endDateVal = endYear * 12 + endMonth;
-  
+
   while (currentYear * 12 + currentMonth <= endDateVal) {
     targets.push({ year: currentYear, month: currentMonth });
-    
+
     currentMonth++;
     if (currentMonth > 12) {
       currentMonth = 1;

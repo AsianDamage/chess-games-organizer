@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChessGame } from '../types';
-import { Trophy, Target, Minus, Ban, Clock, Flag } from 'lucide-react';
+import { Trophy, Target, Minus, Clock, Flag } from 'lucide-react';
 
 interface SidebarProps {
   games: ChessGame[];
@@ -14,7 +14,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ games, selectedGame, username,
   const getResultIcon = (game: ChessGame) => {
     const isWhite = game.white.username.toLowerCase() === username.toLowerCase();
     const result = isWhite ? game.white.result : game.black.result;
-    
+
     if (result === 'win') return <Trophy className="w-3 h-3" />;
     if (result === 'checkmated') return <Target className="w-3 h-3" />;
     if (result === 'timeout') return <Clock className="w-3 h-3" />;
@@ -25,32 +25,32 @@ export const Sidebar: React.FC<SidebarProps> = ({ games, selectedGame, username,
   const getGameStyle = (game: ChessGame, isSelected: boolean) => {
     const isWhite = game.white.username.toLowerCase() === username.toLowerCase();
     const result = isWhite ? game.white.result : game.black.result;
-    
+
     const base = "w-full text-left p-4 rounded-xl border transition-all duration-200 group";
-    
+
     // Result-based tinting
     if (result === 'win') {
-        return `${base} ${isSelected 
-            ? 'bg-emerald-50 border-emerald-300 ring-1 ring-emerald-200 shadow-sm' 
+        return `${base} ${isSelected
+            ? 'bg-emerald-50 border-emerald-300 ring-1 ring-emerald-200 shadow-sm'
             : 'bg-emerald-50/40 border-emerald-100/50 hover:bg-emerald-50 hover:border-emerald-200'}`;
     }
-    
+
     if (['checkmated', 'resigned', 'timeout', 'abandoned', 'lose'].includes(result)) {
-        return `${base} ${isSelected 
-            ? 'bg-rose-50 border-rose-300 ring-1 ring-rose-200 shadow-sm' 
+        return `${base} ${isSelected
+            ? 'bg-rose-50 border-rose-300 ring-1 ring-rose-200 shadow-sm'
             : 'bg-rose-50/40 border-rose-100/50 hover:bg-rose-50 hover:border-rose-200'}`;
     }
-    
+
     // Default/Draw
-    return `${base} ${isSelected 
-        ? 'bg-gray-50 border-gray-300 ring-1 ring-gray-200 shadow-sm' 
+    return `${base} ${isSelected
+        ? 'bg-gray-50 border-gray-300 ring-1 ring-gray-200 shadow-sm'
         : 'bg-white border-transparent hover:bg-gray-50 hover:border-gray-200'}`;
   };
 
   const getBadgeClass = (game: ChessGame) => {
     const isWhite = game.white.username.toLowerCase() === username.toLowerCase();
     const result = isWhite ? game.white.result : game.black.result;
-    
+
     if (result === 'win') {
         return 'bg-emerald-100 text-emerald-800 border border-emerald-200';
     }
@@ -67,7 +67,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ games, selectedGame, username,
             <h3 className="font-semibold text-gray-900 truncate max-w-[150px] text-lg">{username}</h3>
             <span className="text-xs text-gray-500 font-medium uppercase tracking-wider">{games.length} games found</span>
         </div>
-        <button 
+        <button
             onClick={onReset}
             className="text-xs px-4 py-2 rounded-full border border-gray-200 hover:bg-gray-50 text-gray-600 transition-colors font-medium"
         >
@@ -101,7 +101,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ games, selectedGame, username,
                     {userPlayer.result}
                     </span>
                 </div>
-                
+
                 <div className="flex justify-between items-end text-xs text-gray-500 font-medium">
                     <div className="flex items-center gap-3">
                         <span className="bg-gray-100 px-1.5 py-0.5 rounded text-gray-600">
