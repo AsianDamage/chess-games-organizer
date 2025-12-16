@@ -1,0 +1,5 @@
+{
+  "name": "Better Game Navigator",
+  "description": "A robust tool to fetch and analyze historical chess games from Chess.com with advanced filtering and playback capabilities.",
+  "requestFramePermissions": []
+}
